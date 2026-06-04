@@ -42,8 +42,9 @@ def train(X_train_svd, Y_train,
             num_leaves=num_leaves,
             random_state=SEED,
             verbose=-1,
+            n_jobs=1,
         ),
-        n_jobs=-1,
+        n_jobs=1,
     )
     clf.fit(X_train_svd, Y_train)
     return clf
