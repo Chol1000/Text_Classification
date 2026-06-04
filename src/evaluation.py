@@ -270,6 +270,37 @@ class ExperimentTracker:
 
 
 # ---------------------------------------------------------------------------
+# TF-IDF + LinearSVC sklearn Pipeline (used for learning curves / CV)
+# ---------------------------------------------------------------------------
+
+def build_tfidf_svc_pipeline(C=1.0, max_iter=3000):
+    """Return a TF-IDF + OneVsRest LinearSVC sklearn Pipeline.
+
+    Used for learning-curve and cross-validation analysis where sklearn
+    needs a single estimator that both fits and transforms.
+    """
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.svm import LinearSVC
+    from sklearn.multiclass import OneVsRestClassifier
+    from sklearn.pipeline import Pipeline
+    from config import SEED, TFIDF_MAX_FEATURES, TFIDF_MIN_DF
+    return Pipeline([
+        ('tfidf', TfidfVectorizer(
+            max_features=TFIDF_MAX_FEATURES,
+            sublinear_tf=True,
+            min_df=TFIDF_MIN_DF,
+        )),
+        ('clf', OneVsRestClassifier(
+            LinearSVC(C=C, max_iter=max_iter, random_state=SEED)
+        )),
+    ])
+
+
+# Alias — notebook calls build_eval_pipeline(C=best_C) for learning curves
+build_eval_pipeline = build_tfidf_svc_pipeline
+
+
+# ---------------------------------------------------------------------------
 # Convenience pipeline wrapper
 # ---------------------------------------------------------------------------
 
