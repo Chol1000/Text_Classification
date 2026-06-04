@@ -253,6 +253,10 @@ class ExperimentTracker:
         df = pd.DataFrame(self._records).sort_values("Exp").reset_index(drop=True)
         return df
 
+    def to_dataframe(self) -> pd.DataFrame:
+        """Alias for summary() — backward compatibility."""
+        return self.summary()
+
     def best(self, metric: str = "Hamming Loss", lower_is_better: bool = True) -> dict:
         """Return the record with the best value for a given metric."""
         df = self.summary()
