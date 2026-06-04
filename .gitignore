@@ -10,6 +10,3 @@ __pycache__/
 # Virtual environments
 venv/
 .env
-
-# Generated outputs — recreated when notebook runs
-outputs/
