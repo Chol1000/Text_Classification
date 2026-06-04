@@ -304,7 +304,7 @@ build_eval_pipeline = build_tfidf_svc_pipeline
 # Convenience pipeline wrapper
 # ---------------------------------------------------------------------------
 
-def build_eval_pipeline(
+def run_experiment_pipeline(
     clf,
     X_train,
     Y_train,
