@@ -1,0 +1,12 @@
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+sentence-transformers==2.7.0
+lightgbm
+wordcloud
+nltk
+beautifulsoup4
+joblib
+scipy
