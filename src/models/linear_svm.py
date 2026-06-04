@@ -101,6 +101,26 @@ def predict(clf: OneVsRestClassifier, X) -> np.ndarray:
 
 
 # ---------------------------------------------------------------------------
+# Calibrated model (for Precision-Recall curves)
+# ---------------------------------------------------------------------------
+
+def train_calibrated(X_train, Y_train, C=1.0, max_iter=2000, random_state=42):
+    """Train a probability-calibrated OneVsRest LinearSVC.
+
+    Uses CalibratedClassifierCV so predict_proba() is available.
+    Required for Precision-Recall curve computation in Section 6.8.
+    """
+    from sklearn.calibration import CalibratedClassifierCV
+    clf = OneVsRestClassifier(
+        CalibratedClassifierCV(
+            LinearSVC(C=C, max_iter=max_iter, random_state=random_state)
+        )
+    )
+    clf.fit(X_train, Y_train)
+    return clf
+
+
+# ---------------------------------------------------------------------------
 # C hyperparameter sweep
 # ---------------------------------------------------------------------------
 
