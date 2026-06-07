@@ -8,6 +8,8 @@
 
 ## Demo Video
 
+### [▶ Watch the Demo Video](https://drive.google.com/file/d/12v2p_s7bWKwJi2VZykuMrXVtoIZf63I9/view?usp=sharing)
+
 [![Watch the Demo](https://img.shields.io/badge/Demo%20Video-Google%20Drive-blue?style=for-the-badge&logo=google-drive)](https://drive.google.com/file/d/12v2p_s7bWKwJi2VZykuMrXVtoIZf63I9/view?usp=sharing)
 
 ---
